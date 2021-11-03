@@ -14,10 +14,12 @@
    variabelen die je gebruikt maken
  *****************************************/
 // gebruikte pinnen
-const int pinLedA   = 12; // pin van LED A
-const int pinLedB   = 11; // pin van LED B
-const int pinKnopA  = 2; // pin van knop A
-const int pinKnopB  = 3; // pin van knop B
+const int pinLedA   = 9; // pin van LED A
+const int pinLedB   = 8; // pin van LED B
+const int pinledC   = 7; // pin van LED C
+const int pinKnopA  = 12; // pin van knop A
+const int pinKnopB  = 11; // pin van knop B
+const int pinKnopC  = 10; // pin van know C
 
 /*****************************************
    setup()
@@ -30,14 +32,17 @@ void setup() {
   // zet pinmode voor leds
   pinMode(pinLedA, OUTPUT);
   pinMode(pinLedB, OUTPUT);
+  pinMode(pinLedC, OUTPUT);
 
   // zet pinmode voor knoppen
   pinMode(pinKnopA, INPUT);
   pinMode(pinKnopB, INPUT);
+  pinMode(pinKnopC, INPUT);
 
   // zet LEDs aan
   digitalWrite(pinLedA, HIGH);
   digitalWrite(pinLedB, HIGH);
+  digitalWrite(pinLedC, HIGH);
   // wacht seconde zodat je kunt zien dat de LEDs het doen
   delay(1000);
 }
@@ -55,9 +60,9 @@ void loop() {
 
   // zet LedB aan/uit afhankelijk van stand van nopB
   if (digitalRead(pinKnopB) == LOW) {
-    digitalWrite(pinLedB, LOW);
+    digitalWrite(pinLedC, LOW);
   } else {
-    digitalWrite(pinLedB, HIGH);
+    digitalWrite(pinLedC, HIGH);
   }
 
   // kleine vertraging, 100 keer per seconde loopen is genoeg

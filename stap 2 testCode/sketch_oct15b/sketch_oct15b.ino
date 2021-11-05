@@ -14,12 +14,12 @@
    variabelen die je gebruikt maken
  *****************************************/
 // gebruikte pinnen
-const int pinLedA   = 9; // pin van LED A
-const int pinLedB   = 8; // pin van LED B
-const int pinledC   = 7; // pin van LED C
-const int pinKnopA  = 12; // pin van knop A
-const int pinKnopB  = 11; // pin van knop B
-const int pinKnopC  = 10; // pin van know C
+const int pinLedRood   = 9; // pin van LED A
+const int pinLedGeel   = 8; // pin van LED B
+const int pinLedGroen   = 7; // pin van LED C
+const int pinKnopS1  = 12; // pin van knop A
+const int pinKnopS2  = 11; // pin van knop B
+const int pinKnopStart  = 10; // pin van know C
 
 /*****************************************
    setup()
@@ -30,19 +30,19 @@ void setup() {
   Serial.println("Test start");
 
   // zet pinmode voor leds
-  pinMode(pinLedA, OUTPUT);
-  pinMode(pinLedB, OUTPUT);
-  pinMode(pinLedC, OUTPUT);
+  pinMode(pinLedRood, OUTPUT);
+  pinMode(pinLedGeel, OUTPUT);
+  pinMode(pinLedGroen, OUTPUT);
 
   // zet pinmode voor knoppen
-  pinMode(pinKnopA, INPUT);
-  pinMode(pinKnopB, INPUT);
-  pinMode(pinKnopC, INPUT);
+  pinMode(pinKnopS1, INPUT);
+  pinMode(pinKnopS2, INPUT);
+  pinMode(pinKnopStart, INPUT);
 
   // zet LEDs aan
-  digitalWrite(pinLedA, HIGH);
-  digitalWrite(pinLedB, HIGH);
-  digitalWrite(pinLedC, HIGH);
+  digitalWrite(pinLedRood, HIGH);
+  digitalWrite(pinLedGeel, HIGH);
+  digitalWrite(pinLedGroen, HIGH);
   // wacht seconde zodat je kunt zien dat de LEDs het doen
   delay(1000);
 }
@@ -52,17 +52,17 @@ void setup() {
  *****************************************/
 void loop() {
   // zet LedA aan/uit afhankelijk van stand van knopA
-  if (digitalRead(pinKnopA) == LOW) {
-    digitalWrite(pinLedA, LOW);
+  if (digitalRead(pinKnopS1) == LOW) {
+    digitalWrite(pinLedRood, LOW);
   } else {
-    digitalWrite(pinLedA, HIGH);
+    digitalWrite(pinLedRood, HIGH);
   }
 
   // zet LedB aan/uit afhankelijk van stand van nopB
-  if (digitalRead(pinKnopB) == LOW) {
-    digitalWrite(pinLedC, LOW);
+  if (digitalRead(pinKnopS2) == LOW) {
+    digitalWrite(pinLedGroen, LOW);
   } else {
-    digitalWrite(pinLedC, HIGH);
+    digitalWrite(pinLedGroen, HIGH);
   }
 
   // kleine vertraging, 100 keer per seconde loopen is genoeg

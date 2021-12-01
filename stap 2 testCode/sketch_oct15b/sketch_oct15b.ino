@@ -53,16 +53,16 @@ void setup() {
 void loop() {
   // zet LedA aan/uit afhankelijk van stand van knopA
   if (digitalRead(pinKnopS1) == LOW) {
-    digitalWrite(pinLedRood, LOW);
-  } else {
     digitalWrite(pinLedRood, HIGH);
+  } else {
+    digitalWrite(pinLedRood, LOW);
   }
 
   // zet LedB aan/uit afhankelijk van stand van nopB
   if (digitalRead(pinKnopS2) == LOW) {
-    digitalWrite(pinLedGroen, LOW);
-  } else {
     digitalWrite(pinLedGroen, HIGH);
+  } else {
+    digitalWrite(pinLedGroen, LOW);
   }
 
   // kleine vertraging, 100 keer per seconde loopen is genoeg

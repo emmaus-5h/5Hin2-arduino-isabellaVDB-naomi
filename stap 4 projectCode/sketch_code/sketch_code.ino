@@ -6,18 +6,19 @@ const int pinKnopS2  = 11; // pin van knop B
 const int pinKnopStart  = 10; // pin van know C
 int PuntenS1 = 0;
 int PuntenS2 = 0;
-int toestand = TELAF;
 const int TELAF = 1;
 const int ROOD = 2;
 const int GEEL = 3;
 const int GROEN = 4;
 const int START = 5;
-const int FINSIH = 6;
+const int FINISH = 6;
+int toestand = TELAF;
+
 unsigned long toestandStartTijd = 0;
 void setup() {
 // enable console en stuur opstartbericht
   Serial.begin(9600);
-  Serial.printIn("Game start");
+  Serial.println("Game start");
   
   // zet pinmode voor leds
   pinMode(pinLedRood, OUTPUT);
@@ -33,6 +34,9 @@ void setup() {
 void loop() {
   // start
   if (toestand == TELAF) {
+    digitalWrite(pinLedGroen, LOW);
+    digitalWrite(pinLedGeel, LOW);
+    digitalWrite(pinLedRood, LOW);
     if (digitalRead(pinKnopStart)==LOW) {
       toestandStartTijd = millis();
       toestand = ROOD;
@@ -78,15 +82,26 @@ void loop() {
     if(digitalRead(pinKnopS1)==LOW){
       digitalWrite(pinLedRood, HIGH);
       PuntenS1 = PuntenS1+1;
-    };
+    }
+    
     if(digitalRead(pinKnopS2)==LOW){
       digitalWrite(pinLedGroen, HIGH);
       PuntenS2 = PuntenS2+1;
-    };
-    if (millis() - toestandStartTijd > 10000) {
+    }
+        if (millis() - toestandStartTijd > 10000) {
       toestandStartTijd = millis();
       toestand = FINISH;
       Serial.println("Nieuwe toestand: FINISH");
+    }
+  }
+    if (toestand == FINISH) {
+   digitalWrite(pinLedGroen, LOW);
+    digitalWrite(pinLedGeel, LOW);
+    digitalWrite(pinLedRood, LOW);
+    if (digitalRead(pinKnopStart)==LOW) {       
+      toestandStartTijd = millis();
+      toestand = TELAF;
+      Serial.println("Nieuwe toestand: TELAF");
     }
   }
 
@@ -98,5 +113,4 @@ void loop() {
   delay(10);
   // wacht seconde zodat je kunt zien dat de LEDs het doen
   
-   };
-};
+   }
